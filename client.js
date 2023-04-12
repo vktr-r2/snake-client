@@ -10,19 +10,16 @@ const connect = function () {
   // interpret incoming data as text
   conn.setEncoding("utf8");
   
+  //Event triggers upon connection
   conn.on("connect", () => {
-    console.log("You sneaky Snek!  You're connected ...");
+    console.log("You sneaky Snek!  You're connected ...");    //Confirm we're connected
+    conn.write("Name: Vik");    //Write name to server
   });
 
+  //Event triggers upon server sending us data AKA message
   conn.on("data", (data) => {
-    console.log("Server says: ", data);
+    console.log("Server says: ", data);   //Console.log the message
   });
-
-  conn.on("connect", () => {
-    conn.write("Name: Vik");
-  });
-  
-
   
   return conn;
 };
